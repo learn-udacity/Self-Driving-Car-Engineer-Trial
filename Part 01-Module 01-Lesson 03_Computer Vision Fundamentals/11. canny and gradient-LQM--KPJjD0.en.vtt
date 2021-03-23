@@ -1,0 +1,64 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.044
+Looking at a greyscale image I see bright points,
+
+00:00:03.044 --> 00:00:05.564
+dark points and all the gray in between.
+
+00:00:05.565 --> 00:00:09.080
+Rapid changes in brightness are where we find the edges.
+
+00:00:09.080 --> 00:00:12.000
+Our image is just a mathematical function of x and y so
+
+00:00:12.000 --> 00:00:15.724
+we can perform mathematical operations on it just like any other function.
+
+00:00:15.724 --> 00:00:17.804
+For example, we can take its derivative
+
+00:00:17.804 --> 00:00:21.030
+which is just a measure of change of this function.
+
+00:00:21.030 --> 00:00:22.650
+A small derivative means small change,
+
+00:00:22.649 --> 00:00:24.404
+big derivative, big change.
+
+00:00:24.405 --> 00:00:25.950
+Images are two dimensional,
+
+00:00:25.949 --> 00:00:30.600
+so it makes sense to take the derivative with respect to x and y simultaneously.
+
+00:00:30.600 --> 00:00:33.179
+This is called the gradient and in computing it,
+
+00:00:33.179 --> 00:00:36.674
+we're measuring how fast pixel values are changing at each point
+
+00:00:36.674 --> 00:00:40.424
+in an image and in which direction they're changing most rapidly.
+
+00:00:40.424 --> 00:00:43.094
+Computing the gradient gives us thick edges.
+
+00:00:43.094 --> 00:00:44.729
+With the Canny algorithm,
+
+00:00:44.729 --> 00:00:46.559
+we will thin out these edges to find
+
+00:00:46.560 --> 00:00:50.065
+just the individual pixels that follow the strongest gradients.
+
+00:00:50.064 --> 00:00:53.519
+We'll then extend those strong edges to include pixels all the way down
+
+00:00:53.520 --> 00:00:57.000
+to a lower threshold that we defined when calling the Canny function.
+

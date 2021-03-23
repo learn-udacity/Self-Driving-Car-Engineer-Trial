@@ -1,0 +1,61 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.910
+Okay, so now I've taken a greyscaled image,
+
+00:00:02.910 --> 00:00:04.500
+and using edge detection,
+
+00:00:04.500 --> 00:00:06.540
+turned it into an image full of dots,
+
+00:00:06.540 --> 00:00:10.800
+but only the dots that represent edges in the original image.
+
+00:00:10.800 --> 00:00:12.535
+Now let's connect the dots.
+
+00:00:12.535 --> 00:00:15.484
+I could connect the dots to look for any kind of shape in my image.
+
+00:00:15.484 --> 00:00:17.559
+but in this case I'm looking for lines.
+
+00:00:17.559 --> 00:00:21.509
+To find lines, I need to first adopt a model of a line and
+
+00:00:21.510 --> 00:00:25.850
+then fit that model to the assortment of dots in my edge detected image.
+
+00:00:25.850 --> 00:00:29.304
+Keeping in mind that my image is just a function of x and y,
+
+00:00:29.304 --> 00:00:33.875
+I can use the old familiar equation of a line y = mx + b.
+
+00:00:33.875 --> 00:00:37.590
+In this case my model includes two parameters, m and b.
+
+00:00:37.590 --> 00:00:41.695
+In image space, a line is plotted as x versus y,
+
+00:00:41.695 --> 00:00:43.304
+but in parameter space,
+
+00:00:43.304 --> 00:00:45.255
+which we will call Hough space,
+
+00:00:45.255 --> 00:00:49.215
+I can represent that same line as m versus b instead.
+
+00:00:49.215 --> 00:00:53.670
+The Hough transform is just a conversion from image space to Hough space.
+
+00:00:53.670 --> 00:00:56.700
+So the characterization of a line in image space will be
+
+00:00:56.700 --> 00:01:00.179
+a single point at the position m-b in Hough space.
+

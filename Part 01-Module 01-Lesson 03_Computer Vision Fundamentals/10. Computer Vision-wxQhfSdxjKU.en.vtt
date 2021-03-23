@@ -1,0 +1,46 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.174
+&gt;&gt; When we talk about computer vision,
+
+00:00:02.174 --> 00:00:04.889
+we're literally talking about using algorithms
+
+00:00:04.889 --> 00:00:07.844
+to let a computer see the world like we see it,
+
+00:00:07.844 --> 00:00:11.219
+full of depth and color and shapes and meaning.
+
+00:00:11.220 --> 00:00:13.701
+Computer Vision is a really broad field
+
+00:00:13.701 --> 00:00:16.830
+and right now we're just going to focus on a few features.
+
+00:00:16.829 --> 00:00:19.154
+Later in the Nanodegree program,
+
+00:00:19.155 --> 00:00:21.690
+we'll be getting much more in depth with the tools and
+
+00:00:21.690 --> 00:00:26.220
+techniques used in Computer Vision for self-driving cars.
+
+00:00:26.219 --> 00:00:27.570
+&gt;&gt; At this point, we'll introduce you to
+
+00:00:27.570 --> 00:00:30.585
+two powerful techniques that you'll use for your first project,
+
+00:00:30.585 --> 00:00:34.079
+where you'll be identifying the lane lines in an image of the road.
+
+00:00:34.079 --> 00:00:35.354
+The first technique we'll look at,
+
+00:00:35.354 --> 00:00:38.000
+is Canny Edge Detection. So let's give it a go.
+

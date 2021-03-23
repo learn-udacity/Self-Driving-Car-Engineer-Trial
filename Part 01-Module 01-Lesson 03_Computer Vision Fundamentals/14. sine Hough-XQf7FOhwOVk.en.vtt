@@ -1,0 +1,67 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.015
+So our strategy to find lines in image space
+
+00:00:03.015 --> 00:00:06.755
+will be to look for intersecting lines in Hough space.
+
+00:00:06.754 --> 00:00:09.765
+We do this by dividing up our Hough space into a grid,
+
+00:00:09.765 --> 00:00:14.640
+and define intersecting lines as all lines passing through a given grid cell.
+
+00:00:14.640 --> 00:00:16.410
+To do this, I'll first run
+
+00:00:16.410 --> 00:00:21.699
+the Canny edge detection algorithm to find all points associated with edges in my image.
+
+00:00:21.699 --> 00:00:26.839
+I can then consider every point in this edge-detected image as a line in Hough space.
+
+00:00:26.839 --> 00:00:29.375
+And where many lines in Hough space intersect,
+
+00:00:29.375 --> 00:00:34.570
+I declare I have found a collection of points that describe a line in image space.
+
+00:00:34.570 --> 00:00:36.200
+We have a problem though,
+
+00:00:36.200 --> 00:00:40.690
+vertical lines have infinite slope in m-b representation,
+
+00:00:40.689 --> 00:00:43.299
+so we need a new parameterization.
+
+00:00:43.299 --> 00:00:46.974
+Let's redefine our line in polar coordinates.
+
+00:00:46.975 --> 00:00:48.554
+Now the variable, ρ,
+
+00:00:48.554 --> 00:00:52.575
+describes the perpendicular distance of the line from the origin,
+
+00:00:52.575 --> 00:00:56.925
+and θ is the angle of the line away from horizontal.
+
+00:00:56.924 --> 00:01:01.714
+Now each point in image space corresponds to a sine curve in Hough space.
+
+00:01:01.715 --> 00:01:03.585
+If we take a whole line of points,
+
+00:01:03.585 --> 00:01:06.549
+it translates into a whole bunch of sine curves in Hough space.
+
+00:01:06.549 --> 00:01:09.674
+And again, the intersection of those sine curves
+
+00:01:09.674 --> 00:01:13.200
+in θ-ρ space gives the parameterization of the line.
+

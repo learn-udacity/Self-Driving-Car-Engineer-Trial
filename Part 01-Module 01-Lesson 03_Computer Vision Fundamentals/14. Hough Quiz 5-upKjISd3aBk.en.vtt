@@ -1,0 +1,13 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.674
+All right. I'd like to check your intuition on this.
+
+00:00:02.674 --> 00:00:06.509
+If you run a Hough transform on an image of dots forming a square,
+
+00:00:06.509 --> 00:00:09.089
+what would you expect to see in Hough space?
+

@@ -1,0 +1,67 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.908
+&gt;&gt; Your job is to teach the car how to drive itself,
+
+00:00:02.908 --> 00:00:04.195
+and in order to do that,
+
+00:00:04.195 --> 00:00:07.919
+you're going to need to teach the car how to perceive the world around it.
+
+00:00:07.919 --> 00:00:08.970
+Now, when I drive,
+
+00:00:08.970 --> 00:00:11.160
+I use my eyes to figure out how fast
+
+00:00:11.160 --> 00:00:14.234
+to go and where the lane lines are and where to turn.
+
+00:00:14.234 --> 00:00:15.764
+A car doesn't have eyes.
+
+00:00:15.765 --> 00:00:17.460
+But, in a self-driving car,
+
+00:00:17.460 --> 00:00:21.240
+we can use cameras and other sensors to achieve a similar function.
+
+00:00:21.239 --> 00:00:22.679
+&gt;&gt; That's right. So, let's think about what
+
+00:00:22.679 --> 00:00:25.564
+those cameras are seeing as we drive down the road.
+
+00:00:25.565 --> 00:00:27.060
+You and I can see where the lane lines are
+
+00:00:27.059 --> 00:00:30.259
+automatically but we need to teach the car how to do that.
+
+00:00:30.259 --> 00:00:33.659
+So, your goal in this first module is to write code to
+
+00:00:33.659 --> 00:00:37.349
+identify and track the position of the lane lines in a series of images.
+
+00:00:37.350 --> 00:00:40.725
+&gt;&gt; And, in the project at the end of this first module,
+
+00:00:40.725 --> 00:00:44.640
+you're going to use image analysis techniques to do exactly that.
+
+00:00:44.640 --> 00:00:46.984
+So, let's start really high level.
+
+00:00:46.984 --> 00:00:50.354
+Here's a picture of a stretch of wide open highway.
+
+00:00:50.354 --> 00:00:52.349
+What kinds of features do you think would be
+
+00:00:52.350 --> 00:00:56.000
+helpful to figure out where the lane lines are in this image?
+

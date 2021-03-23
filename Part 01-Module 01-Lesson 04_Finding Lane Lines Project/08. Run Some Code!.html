@@ -1,0 +1,207 @@
+<!-- udacimak v1.2.1 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Run Some Code!</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Finding Lane Lines Project</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Building a Portfolio.html">01. Building a Portfolio</a>
+    </li>
+    <li class="">
+      <a href="02. Project Intro.html">02. Project Intro</a>
+    </li>
+    <li class="">
+      <a href="03. Project Expectations.html">03. Project Expectations</a>
+    </li>
+    <li class="">
+      <a href="04. Project instructions Workspaces.html">04. Project instructions Workspaces</a>
+    </li>
+    <li class="">
+      <a href="05. Finding Lane Lines.html">05. Finding Lane Lines</a>
+    </li>
+    <li class="">
+      <a href="06. Project instructions Local Setup.html">06. Project instructions Local Setup</a>
+    </li>
+    <li class="">
+      <a href="07. Starter Kit Installation.html">07. Starter Kit Installation</a>
+    </li>
+    <li class="">
+      <a href="08. Run Some Code!.html">08. Run Some Code!</a>
+    </li>
+    <li class="">
+      <a href="Project Description - Finding Lane Lines on the Road.html">Project Description - Finding Lane Lines on the Road</a>
+    </li>
+    <li class="">
+      <a href="Project Rubric - Finding Lane Lines on the Road.html">Project Rubric - Finding Lane Lines on the Road</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">08. Run Some Code!</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="run-some-code">Run Some Code!</h3>
+<p>Now that everything is installed, let's make sure it's working!</p>
+<ol>
+<li>Clone and navigate to the starter kit test repository.</li>
+</ol>
+<pre><code class="sh language-sh"># NOTE: This is DIFFERENT from  https://github.com/udacity/CarND-Term1-Starter-Kit.git
+git clone https://github.com/udacity/CarND-Term1-Starter-Kit-Test.git
+cd CarND-Term1-Starter-Kit-Test</code></pre>
+<ol start="2">
+<li>Launch the Jupyter notebook with Anaconda or Docker. <strong>This notebook is simply to make sure the installed packages are working properly.</strong> The instructions for the first project are on the next page.</li>
+</ol>
+<pre><code class="sh language-sh"># Anaconda
+source activate carnd-term1 # If currently deactivated, i.e. start of a new terminal session
+jupyter notebook test.ipynb</code></pre>
+<pre><code class="sh language-sh"># Docker
+docker run -it --rm -p 8888:8888 -v ${pwd}:/src udacity/carnd-term1-starter-kit test.ipynb
+# OR
+docker run -it --rm -p 8888:8888 -v `pwd`:/src udacity/carnd-term1-starter-kit test.ipynb</code></pre>
+<ol start="3">
+<li>Go to <a href="http://localhost:8888/notebooks/test.ipynb" target="_blank"><code>http://localhost:8888/notebooks/test.ipynb</code></a> in your browser and run all the cells. Everything should execute without error.</li>
+</ol>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="troubleshooting">Troubleshooting</h3>
+<h4 id="ffmpeg">ffmpeg</h4>
+<p><strong>NOTE:</strong> If you don't have <code>ffmpeg</code> installed on your computer you'll have to install it for <code>moviepy</code> to work. If this is the case you'll be prompted by an error in the notebook. You can easily install <code>ffmpeg</code> by running the following in a code cell in the notebook.</p>
+<pre><code class="python language-python">import imageio
+imageio.plugins.ffmpeg.download()</code></pre>
+<p>Once it's installed, <code>moviepy</code> should work.</p>
+<h4 id="docker">Docker</h4>
+<p>To get the latest version of the <a href="https://hub.docker.com/r/udacity/carnd-term1-starter-kit/" target="_blank">docker image</a>, you may need to run:</p>
+<pre><code class="sh language-sh">docker pull udacity/carnd-term1-starter-kit</code></pre>
+<p>Warning! The image is ~2GB!</p>
+</div>
+
+</div>
+<div class="divider"></div>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://github.com/udacimak/udacimak#readme" target="_blank">udacimak v1.2.1</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+    });
+  </script>
+</body>
+
+</html>

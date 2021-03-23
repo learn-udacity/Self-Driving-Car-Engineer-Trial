@@ -1,0 +1,19 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.514
+Now, let's focus on just the region of the image that interests us,
+
+00:00:04.514 --> 00:00:07.344
+namely, the region where the lane lines are.
+
+00:00:07.344 --> 00:00:10.410
+In this case, you can assume that the camera that took
+
+00:00:10.410 --> 00:00:14.150
+the image is mounted in a fixed position on the front of the car.
+
+00:00:14.150 --> 00:00:18.469
+Therefore, the lane lines will always appear in the same general region of the image.
+

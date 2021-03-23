@@ -1,0 +1,52 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:01.679
+&gt;&gt; Great job so far.
+
+00:00:01.679 --> 00:00:04.945
+In this lesson, you've used image analysis techniques like
+
+00:00:04.945 --> 00:00:10.140
+Canny edge detection and Hough transforms to find lane lines in images.
+
+00:00:10.140 --> 00:00:13.830
+These are the exact same techniques that you're going to need for the first project.
+
+00:00:13.830 --> 00:00:16.969
+So, Ryan, what will students be doing for the first project?
+
+00:00:16.969 --> 00:00:19.679
+&gt;&gt; Well, your goal in this first project is to write
+
+00:00:19.679 --> 00:00:21.989
+a software pipeline to identify and
+
+00:00:21.989 --> 00:00:25.024
+track the position of the lane lines in a video stream.
+
+00:00:25.024 --> 00:00:26.459
+That might sound complicated,
+
+00:00:26.460 --> 00:00:28.530
+but don't worry, you can do it.
+
+00:00:28.530 --> 00:00:31.035
+A video is really just a series of images,
+
+00:00:31.035 --> 00:00:35.054
+so you already have the tools you need to do this project.
+
+00:00:35.054 --> 00:00:37.200
+&gt;&gt; Awesome. This project is
+
+00:00:37.200 --> 00:00:40.650
+your first step toward becoming a real self-driving car engineer.
+
+00:00:40.649 --> 00:00:43.649
+And in fact, this was one of my first projects when I was
+
+00:00:43.649 --> 00:00:47.179
+learning to become a self-driving car engineer. So, let's get to it.
+

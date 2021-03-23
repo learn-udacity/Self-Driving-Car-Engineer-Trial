@@ -1,0 +1,208 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:05.400
+Our very first project in the Self-driving Car Nanodegree will be to find lane markings.
+
+00:00:05.400 --> 00:00:06.625
+Why is that important?
+
+00:00:06.625 --> 00:00:09.220
+Well, I can tell you, if you can't find lane markings,
+
+00:00:09.220 --> 00:00:11.455
+you would have no clue where to drive.
+
+00:00:11.455 --> 00:00:13.548
+You probably don't pay much attention to them,
+
+00:00:13.548 --> 00:00:15.255
+but as a self-driving car engineer,
+
+00:00:15.255 --> 00:00:16.605
+it'll becomes your best friend.
+
+00:00:16.605 --> 00:00:20.737
+They tell you a lot as to where to drive.
+
+00:00:20.737 --> 00:00:22.620
+We hear what cloning means,
+
+00:00:22.620 --> 00:00:25.410
+that our learning problem will copy and clone
+
+00:00:25.410 --> 00:00:29.027
+human behavior so does our steering actions and breaking gas actions.
+
+00:00:29.027 --> 00:00:31.304
+And you get a chance to try it on your own.
+
+00:00:31.304 --> 00:00:32.704
+When we train people,
+
+00:00:32.704 --> 00:00:34.435
+we don't train them by giving them rules,
+
+00:00:34.435 --> 00:00:36.564
+we train them by letting them learn from examples.
+
+00:00:36.564 --> 00:00:40.132
+So this unit, you will apply neural networks, deep learning,
+
+00:00:40.133 --> 00:00:41.819
+to camera images and do some of
+
+00:00:41.819 --> 00:00:46.320
+the very things that a self-driving car ought to do right.
+
+00:00:46.320 --> 00:00:49.230
+What is computer vision? When you and I drive a car,
+
+00:00:49.229 --> 00:00:53.140
+we use our eyes more than any other organ to understand what to do.
+
+00:00:53.140 --> 00:00:56.850
+Computer vision, this has the same capability into computers,
+
+00:00:56.850 --> 00:00:59.550
+uses cameras and we learn how to extract things like
+
+00:00:59.549 --> 00:01:03.899
+lane markings and other vehicles out of camera images. It's a lot of fun.
+
+00:01:03.899 --> 00:01:09.049
+I'm now really excited to get you into the world of sensor fusion.
+
+00:01:09.049 --> 00:01:10.454
+What is Sensor Fusion?
+
+00:01:10.454 --> 00:01:14.670
+It is a science how to integrate different types of sensors.
+
+00:01:14.670 --> 00:01:19.344
+Self-driving cars have things like lidars and they have radars, and also cameras.
+
+00:01:19.344 --> 00:01:23.129
+And, they have internal sensors called gyroscopes inertial measurement units.
+
+00:01:23.129 --> 00:01:26.250
+Sensor Fusion is a science how to come up with
+
+00:01:26.250 --> 00:01:29.706
+a single coherent picture based on these different modalities.
+
+00:01:29.706 --> 00:01:32.810
+Localization is the simple question,
+
+00:01:32.810 --> 00:01:36.519
+"Where, relative to the road is a car?"
+
+00:01:36.519 --> 00:01:38.090
+And, it's important because,
+
+00:01:38.090 --> 00:01:40.924
+as you're going to see, you got to build maps of the environment.
+
+00:01:40.924 --> 00:01:42.299
+They have lots of detailed information,
+
+00:01:42.299 --> 00:01:44.579
+some of which might even be invisible to the robot like,
+
+00:01:44.579 --> 00:01:45.670
+where the danger zones,
+
+00:01:45.670 --> 00:01:47.980
+where do pedestrians typically cross.
+
+00:01:47.980 --> 00:01:50.643
+And to make sense of those maps,
+
+00:01:50.643 --> 00:01:53.070
+the world must know where is right for the map.
+
+00:01:53.069 --> 00:01:55.729
+And, the alignment of the sensor data the current
+
+00:01:55.730 --> 00:02:00.480
+position to a map, that's what's called localization.
+
+00:02:00.480 --> 00:02:05.636
+So now, we entering the fascinating world of what's called controller.
+
+00:02:05.635 --> 00:02:08.068
+In technical terms, what the controller does,
+
+00:02:08.068 --> 00:02:13.229
+it's a computer program that steers your wheels,
+
+00:02:13.229 --> 00:02:15.840
+your gas pedal, your break pedal, so as to meet a given objective.
+
+00:02:15.840 --> 00:02:18.349
+So for example, if the objective was to stay centered in the road,
+
+00:02:18.349 --> 00:02:22.599
+and you start driving and your car veers to the left,
+
+00:02:22.599 --> 00:02:25.659
+your controller is the unit that decides, "Okay,
+
+00:02:25.659 --> 00:02:28.384
+we compensate with a slight right turn of the steering wheel."
+
+00:02:28.384 --> 00:02:35.594
+That might sound trivial but it's really easy to screw it up.
+
+00:02:35.594 --> 00:02:38.520
+Path Planning is the science of how to find
+
+00:02:38.520 --> 00:02:42.945
+a valid sequence of steps or actions in a maze.
+
+00:02:42.944 --> 00:02:44.674
+When you gone stuck in Manhattan, for example,
+
+00:02:44.675 --> 00:02:45.960
+you want to cross this city you,
+
+00:02:45.960 --> 00:02:47.814
+have to find a plan,
+
+00:02:47.814 --> 00:02:52.539
+a sequence of streets you want to go down to make it all the way to the end.
+
+00:02:52.539 --> 00:02:57.188
+A Path Planning algorithm is an algorithm that finds that sequence of actions for you.
+
+00:02:57.188 --> 00:02:58.905
+You can apply it to city navigation.
+
+00:02:58.905 --> 00:03:02.449
+You can also apply it to parking lot navigation,
+
+00:03:02.449 --> 00:03:04.199
+You will, for example, cross a parking lot.
+
+00:03:04.199 --> 00:03:08.744
+So now, we are ready for the most fascinating part of this nanodegree,
+
+00:03:08.745 --> 00:03:14.129
+we will take your code onto a physical car and drive it around in California.
+
+00:03:14.129 --> 00:03:16.843
+Sounds scary? Yes, I'm slightly scared,
+
+00:03:16.843 --> 00:03:18.090
+but I'm also really excited because
+
+00:03:18.090 --> 00:03:22.460
+there's no great Nanodegree that would be complete without actually riding,
+
+00:03:22.460 --> 00:03:24.460
+finding actual software on actual cars.
+
+00:03:24.460 --> 00:03:26.000
+So, let's do it.
+

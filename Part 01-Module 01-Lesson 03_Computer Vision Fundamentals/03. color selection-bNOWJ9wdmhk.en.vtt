@@ -1,0 +1,43 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.110
+For starters, let's try finding the lane lines using color.
+
+00:00:04.110 --> 00:00:05.915
+The lane lines are white,
+
+00:00:05.915 --> 00:00:08.849
+so how do we select the white pixels in an image?
+
+00:00:08.849 --> 00:00:10.259
+To select a color,
+
+00:00:10.259 --> 00:00:15.149
+we first need to think about what color actually means in the case of digital images.
+
+00:00:15.150 --> 00:00:19.605
+In this case, it means that our image is actually made up of a stack of three images,
+
+00:00:19.605 --> 00:00:22.675
+one each for red, green and blue.
+
+00:00:22.675 --> 00:00:25.545
+These images are sometimes called color channels.
+
+00:00:25.545 --> 00:00:30.282
+Each of these color channels contains pixels whose values range from zero to 255,
+
+00:00:30.282 --> 00:00:36.164
+where zero was the darkest possible value and 255 is the brightest possible value.
+
+00:00:36.164 --> 00:00:39.899
+If zero is dark and 255 is bright,
+
+00:00:39.899 --> 00:00:43.259
+what color would represent pure white in our combined red,
+
+00:00:43.259 --> 00:00:44.509
+green and blue image?
+

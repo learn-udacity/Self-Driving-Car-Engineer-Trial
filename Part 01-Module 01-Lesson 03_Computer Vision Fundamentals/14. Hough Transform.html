@@ -1,0 +1,483 @@
+<!-- udacimak v1.2.1 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Hough Transform</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Computer Vision Fundamentals</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Power of Cameras.html">01. Power of Cameras</a>
+    </li>
+    <li class="">
+      <a href="02. Setting up the Problem.html">02. Setting up the Problem</a>
+    </li>
+    <li class="">
+      <a href="03. Color Selection.html">03. Color Selection</a>
+    </li>
+    <li class="">
+      <a href="04. Color Selection Code Example.html">04. Color Selection Code Example</a>
+    </li>
+    <li class="">
+      <a href="05. Color Selection.html">05. Color Selection</a>
+    </li>
+    <li class="">
+      <a href="06. Region Masking.html">06. Region Masking</a>
+    </li>
+    <li class="">
+      <a href="07. Color and Region Combined.html">07. Color and Region Combined</a>
+    </li>
+    <li class="">
+      <a href="08. Color Region.html">08. Color Region</a>
+    </li>
+    <li class="">
+      <a href="09. Finding Lines of Any Color.html">09. Finding Lines of Any Color</a>
+    </li>
+    <li class="">
+      <a href="10. What is Computer Vision.html">10. What is Computer Vision?</a>
+    </li>
+    <li class="">
+      <a href="11. Canny Edge Detection.html">11. Canny Edge Detection</a>
+    </li>
+    <li class="">
+      <a href="12. Canny to Detect Lane Lines.html">12. Canny to Detect Lane Lines</a>
+    </li>
+    <li class="">
+      <a href="13. Canny Edges.html">13. Canny Edges</a>
+    </li>
+    <li class="">
+      <a href="14. Hough Transform.html">14. Hough Transform</a>
+    </li>
+    <li class="">
+      <a href="15. Hough Transform to Find Lane Lines.html">15. Hough Transform to Find Lane Lines</a>
+    </li>
+    <li class="">
+      <a href="16. Hough Transform.html">16. Hough Transform</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">14. Hough Transform</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3><p>title</p></h3>
+  <div>
+  <h1 id="using-the-hough-transform-to-find-lines-from-canny-edges">Using the Hough Transform to Find Lines from Canny Edges</h1>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Hough Intro</p></h3>
+  <video controls>
+  <source src="14. Hough Intro-JFwj5UtKmPY.mp4" type="video/mp4">
+
+  <track default="false" kind="subtitles" srclang="zh-CN" src="14. Hough Intro-JFwj5UtKmPY.zh-CN.vtt" label="zh-CN">
+  <track default="true" kind="subtitles" srclang="en" src="14. Hough Intro-JFwj5UtKmPY.en.vtt" label="en">
+</video>
+
+
+  <div class="jumbotron" style="margin-top: 50px; margin-bottom: 50px;">
+    <h3>INSTRUCTOR NOTE:</h3>
+    <hr />
+<p>In image space, a line is plotted as x vs. y, but in 1962, Paul Hough devised a method for representing lines in parameter space, which we will call “Hough space” in his honor.  </p>
+<p>In Hough space, I can represent my "x vs. y" line as a point in "m vs. b" instead.  The Hough Transform is just the conversion from image space to Hough space.  So, the characterization of a line in image space will be a single point at the position (m, b) in Hough space.  </p>
+  </div>
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>stuff</p></h3>
+  <div>
+  <hr />
+<p>So now I’d like to check your intuition… if a <strong>line</strong> in image space corresponds to a <strong>point</strong> in Hough space, what would <strong>two parallel lines</strong> in image space correspond to in Hough space?</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>nd013 image parallel lines to hough</p></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/22-q-hough-intro-quiz.png" alt="" class="img img-fluid">
+    <figcaption class="figure-caption">
+      
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>hough_quiz1</p></h3>
+  <div>
+  <form>
+    <fieldset>
+      <legend><p>What will be the representation in Hough space of two parallel lines in image space?</p></legend>
+    </fieldset>
+
+      <div>
+        <input type="radio" value="a1473040826991" name="184324" id="a1473040826991">
+        <label for="a1473040826991"><p>A</p></label>
+      </div>
+      <div>
+        <input type="radio" value="a1473040828562" name="184324" id="a1473040828562">
+        <label for="a1473040828562"><p>B</p></label>
+      </div>
+      <div>
+        <input type="radio" value="a1473040829307" name="184324" id="a1473040829307">
+        <label for="a1473040829307"><p>C</p></label>
+      </div>
+      <div>
+        <input type="radio" value="a1473040830024" name="184324" id="a1473040830024">
+        <label for="a1473040830024"><p>D</p></label>
+      </div>
+  </form>
+  <details>
+    <summary><strong>SOLUTION:</strong></summary>
+     C
+  </details>
+
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>hough_text2</p></h3>
+  <div>
+  <p>Alright, so a line in image space corresponds to a point in Hough space. What does a point in image space correspond to in Hough space?</p>
+<p>A single point in image space has many possible lines that pass through it, but not just any lines, only those with particular combinations of the m and b parameters.  Rearranging the equation of a line, we find that a single point (x,y) corresponds to the line b = y - xm.  </p>
+<p>So what is the representation of a <strong>point</strong> in image space in Hough space?</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>nd013 image point to hough</p></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/23-q-hough-second-quiz.png" alt="" class="img img-fluid">
+    <figcaption class="figure-caption">
+      
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>hough_quiz2</p></h3>
+  <div>
+  <form>
+    <fieldset>
+      <legend><p>What does a point in image space correspond to in Hough space?</p></legend>
+    </fieldset>
+
+      <div>
+        <input type="radio" value="a1473041175741" name="184327" id="a1473041175741">
+        <label for="a1473041175741"><p>A</p></label>
+      </div>
+      <div>
+        <input type="radio" value="a1473041176707" name="184327" id="a1473041176707">
+        <label for="a1473041176707"><p>B</p></label>
+      </div>
+      <div>
+        <input type="radio" value="a1473041177286" name="184327" id="a1473041177286">
+        <label for="a1473041177286"><p>C</p></label>
+      </div>
+      <div>
+        <input type="radio" value="a1473041177978" name="184327" id="a1473041177978">
+        <label for="a1473041177978"><p>D</p></label>
+      </div>
+  </form>
+  <details>
+    <summary><strong>SOLUTION:</strong></summary>
+     A
+  </details>
+
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>hough_text3</p></h3>
+  <div>
+  <p>What if you have <strong>2 points</strong> in image space.  What would that look like in Hough space?</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>nd013 image 2 points</p></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/23-q-hough-second-quiz-copy.png" alt="" class="img img-fluid">
+    <figcaption class="figure-caption">
+      
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>hough_quiz3</p></h3>
+  <div>
+  <form>
+    <fieldset>
+      <legend><p>What is the representation in Hough space of two points in image space?</p></legend>
+    </fieldset>
+
+      <div>
+        <input type="radio" value="a1473041477978" name="184329" id="a1473041477978">
+        <label for="a1473041477978"><p>A</p></label>
+      </div>
+      <div>
+        <input type="radio" value="a1473041478978" name="184329" id="a1473041478978">
+        <label for="a1473041478978"><p>B</p></label>
+      </div>
+      <div>
+        <input type="radio" value="a1473041479564" name="184329" id="a1473041479564">
+        <label for="a1473041479564"><p>C</p></label>
+      </div>
+      <div>
+        <input type="radio" value="a1473041480127" name="184329" id="a1473041480127">
+        <label for="a1473041480127"><p>D</p></label>
+      </div>
+  </form>
+  <details>
+    <summary><strong>SOLUTION:</strong></summary>
+     C
+  </details>
+
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>hough_text4</p></h3>
+  <div>
+  <p>Alright, now we have two intersecting lines in Hough Space. How would you represent their <strong>intersection</strong> at the point (m<sub>0</sub>, b<sub>0</sub>) in image space?</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/25-q-hough-fourth-quiz-updated2.png" alt="" class="img img-fluid">
+    <figcaption class="figure-caption">
+      
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>hough_quiz4</p></h3>
+  <div>
+  <form>
+    <fieldset>
+      <legend><p>What does the intersection point of the two lines in Hough space correspond to in image space?</p></legend>
+    </fieldset>
+
+      <div>
+        <input type="radio" value="a1473041732323" name="184332" id="a1473041732323">
+        <label for="a1473041732323"><p>A) A line in image space that passes through both (x1, y1) and (x2, y2)</p></label>
+      </div>
+      <div>
+        <input type="radio" value="a1473041733125" name="184332" id="a1473041733125">
+        <label for="a1473041733125"><p>B) A line in image space that passes between (x1, y1) and (x2, y2)</p></label>
+      </div>
+      <div>
+        <input type="radio" value="a1473041733838" name="184332" id="a1473041733838">
+        <label for="a1473041733838"><p>C) A line in image space that passes through (x1, y1)</p></label>
+      </div>
+      <div>
+        <input type="radio" value="a1473041734491" name="184332" id="a1473041734491">
+        <label for="a1473041734491"><p>D) A line in image space that passes through only (x2, y2) </p></label>
+      </div>
+  </form>
+  <details>
+    <summary><strong>SOLUTION:</strong></summary>
+     A
+  </details>
+
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>sine Hough</p></h3>
+  <video controls>
+  <source src="14. sine Hough-XQf7FOhwOVk.mp4" type="video/mp4">
+
+  <track default="false" kind="subtitles" srclang="zh-CN" src="14. sine Hough-XQf7FOhwOVk.zh-CN.vtt" label="zh-CN">
+  <track default="true" kind="subtitles" srclang="en" src="14. sine Hough-XQf7FOhwOVk.en.vtt" label="en">
+</video>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>title</p></h3>
+  <div>
+  <p>So, what happens if we run a Hough Transform on an image of a square?  What will the corresponding plot in Hough space look like?</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Hough Quiz 5</p></h3>
+  <video controls>
+  <source src="14. Hough Quiz 5-upKjISd3aBk.mp4" type="video/mp4">
+
+  <track default="false" kind="subtitles" srclang="zh-CN" src="14. Hough Quiz 5-upKjISd3aBk.zh-CN.vtt" label="zh-CN">
+  <track default="true" kind="subtitles" srclang="en" src="14. Hough Quiz 5-upKjISd3aBk.en.vtt" label="en">
+</video>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>hough_quiz5</p></h3>
+  <div>
+  <form>
+    <fieldset>
+      <legend><p>What happens if we run a Hough Transform on an image of a square?  What will the corresponding plot in Hough space look like?</p></legend>
+    </fieldset>
+
+      <div>
+        <input type="radio" value="a1473369788029" name="186279" id="a1473369788029">
+        <label for="a1473369788029"><p>A</p></label>
+      </div>
+      <div>
+        <input type="radio" value="a1473369788637" name="186279" id="a1473369788637">
+        <label for="a1473369788637"><p>B</p></label>
+      </div>
+      <div>
+        <input type="radio" value="a1473369789253" name="186279" id="a1473369789253">
+        <label for="a1473369789253"><p>C</p></label>
+      </div>
+      <div>
+        <input type="radio" value="a1473369789917" name="186279" id="a1473369789917">
+        <label for="a1473369789917"><p>D</p></label>
+      </div>
+  </form>
+  <details>
+    <summary><strong>SOLUTION:</strong></summary>
+     C
+  </details>
+
+</div>
+
+</div>
+<div class="divider"></div>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://github.com/udacimak/udacimak#readme" target="_blank">udacimak v1.2.1</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+    });
+  </script>
+</body>
+
+</html>
